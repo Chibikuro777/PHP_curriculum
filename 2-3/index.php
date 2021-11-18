@@ -76,3 +76,34 @@ if ($name = "taro" && $password = "pass") {
 } else {
     echo "入力情報が間違っています";
 }
+
+echo "<br>";
+
+$num = 0;
+while ($num < 10) {
+    echo $num;
+    $num++;
+}
+
+echo "<br>";
+
+$num = 0;
+do {
+    echo $num;
+    $num++;
+} while ($num < 10);
+
+echo "<br>";
+
+// $number = 0;
+
+// for ($i = 0; $i < 10; $i++) {
+//     echo $number;
+// }
+
+echo "<br>";
+
+$num = 0;
+for ($num = 0; $num <= 100; $num++) {
+    echo $num . "<br>";
+}
