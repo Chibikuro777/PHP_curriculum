@@ -7,8 +7,8 @@
     <br>
     個数：<select name="item_number">
         <?php for ($i = 1; $i <= 10; $i++) { ?>
-            <option value="<?php echo $i . "<br>" ?>">
-                <?php echo $i . "<br>" ?>
+            <option value="<?php echo $i ?>">
+                <?php echo $i ?>
             </option>
         <?php } ?>
     </select>

@@ -8,7 +8,7 @@ function sayHi($name = "goto")
     return "Hi! " . $name . " from " . $myname;
 }
 
-echo sayHi();
+echo sayHi("Satou");
 echo $myname . "<br><br>";
 
 function getRectangularArea($width, $height, $depth)

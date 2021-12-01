@@ -1,0 +1,19 @@
+#wrapper{
+    text-align: center;
+    color: white;
+}
+
+body{
+    background-color: grey;
+}
+
+hr{
+    border-width: 2px;
+}
+
+.form_area{
+    margin-top: 50px;
+}
+
+
+
