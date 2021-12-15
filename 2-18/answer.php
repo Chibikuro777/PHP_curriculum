@@ -5,32 +5,24 @@ $langs    = $_POST['langs'];
 $commands = $_POST['commands'];
 
 // 選択した回答と正解が一致していれば「正解！」、一致していなければ「残念・・・」と出力される処理を組んだ関数を作成
-function answer1($numbers)
+
+$post_data = [
+    $numbers, $langs, $commands,
+];
+
+$answer = ["80", "HTML", "select"];
+
+function answer($answer, $post_data)
 {
-    if ($numbers === "80") {
-        echo "正解！";
+    if ($post_data === $answer) {
+        echo "正解です！";
     } else {
-        echo "残念・・・";
+        echo "残念・・";
     }
 }
 
-function answer2($langs)
-{
-    if ($langs === "HTML") {
-        echo "正解！";
-    } else {
-        echo "残念・・・";
-    }
-}
 
-function answer3($commands)
-{
-    if ($commands === "select") {
-        echo "正解！";
-    } else {
-        echo "残念・・・";
-    }
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,11 +38,17 @@ function answer3($commands)
 <body id="wrapper" class="form_area">
     <p><?php echo $name ?>さんの結果は・・・？</p>
     <p>①の答え</p>
-    <span class="text_color"><?php answer1($numbers) ?></span>
+    <?php
+    answer($answer[0], $post_data[0])
+    ?>
     <p>②の答え</p>
-    <?php answer2($langs) ?>
+    <?php
+    answer($answer[1], $post_data[1])
+    ?>
     <p>③の答え</p>
-    <?php answer3($commands) ?>
+    <?php
+    answer($answer[2], $post_data[2])
+    ?>
 </body>
 
 </html>
