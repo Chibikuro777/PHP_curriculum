@@ -1,5 +1,4 @@
 <?php
-require 'lib/password.php';
 include_once("dbInfo.php");
 
 // エラーメッセージ、登録完了メッセージの初期化
