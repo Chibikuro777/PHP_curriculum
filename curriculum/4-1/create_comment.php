@@ -22,9 +22,10 @@ if (!empty($_POST)) {
         $name = $_POST["name"];
         $content = $_POST["content"];
         // PDOのインスタンスを取得 FILL_IN
+        $pdo = db_connect();
         try {
             // SQL文の準備 FILL_IN
-            $sql = "INSERT INTO comments";
+            $sql = "INSERT INTO comments(post_id, name, content) VALUES (:post_id, :name, :content);";
             // プリペアドステートメントの準備 FILL_IN
             $stmt = $pdo->prepare($sql);
             // post_idをバインド FILL_IN
