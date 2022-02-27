@@ -50,10 +50,10 @@ if (!empty($_POST)) {
     // POSTで渡されたデータがなかった場合
     if (empty($_POST)) {
         // GETで渡されたpost_idを受け取る 
-        $post_id = $_POST["post_id"];
+        $post_id = $_GET["post_id"];
     }
     // $post_idが空だった場合は不正な遷移なので、main.phpに戻す
-    $post_id = $_POST["post_id"];
+    $post_id = $_GET["post_id"];
     if (empty($post_id)) {
         header("Location: main.php");
         exit;
