@@ -1,3 +1,26 @@
+<?php
+require_once('db_connect.php');
+
+require_once('function.php');
+
+check_user_logged_in();
+
+// ログイン処理開始
+$pdo = db_connect();
+try {
+    // SQL文の準備 FILL_IN 
+    $sql = "SELECT * FROM books ORDER BY date ASC;";
+    // プリペアドステートメントの作成 FILL_IN 
+    $stmt = $pdo->prepare($sql);
+    // 実行 FILL_IN
+    $stmt->execute();
+} catch (PDOException $e) {
+    echo 'Error: ' . $e->getMessage();
+    die();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -26,12 +49,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
+                <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+                    <tr>
+                        <td><?php echo $row['title']; ?></td>
+                        <td><?php echo $row['date']; ?></td>
+                        <td><?php echo $row['stock']; ?></td>
+                        <td><a href="delete_book.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">削除</a></td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </form>

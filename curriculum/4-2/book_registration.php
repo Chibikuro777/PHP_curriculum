@@ -18,22 +18,22 @@ if (!empty($_POST)) {
         echo "日付が未入力です。" . "<br>";
     }
     // 在庫数が入力されていない場合の処理
-    if ($_POST["stock"] = "selected") {
+    if (empty($_POST["stock"])) {
         echo "在庫数が未入力です。";
     }
 
     // 両方共入力されている場合
-    if (!empty($_POST["title"]) && !empty($_POST["date"]) && $_POST["stock"] != "selected") {
+    if (!empty($_POST["title"]) && !empty($_POST["date"]) && !empty($_POST["stock"])) {
         // ログイン処理開始
         $pdo = db_connect();
         try {
             // SQL文の準備 FILL_IN 
-            $pdo = new PDO(PDO_DSN, DB_USERNAME, DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $sql = "INSERT INTO books(title, date, stock) VALUES (?, ?, ?)";
             // プリペアドステートメントの作成 FILL_IN 
-            $stmt = $pdo->prepare("INSERT INTO books(title, date, stock) VALUES (?, ?, ?)");
+            $stmt = $pdo->prepare($sql);
             // 実行 FILL_IN
             $stmt->execute(array($title, $date, $stock));
-            //　登録完了メッセージ出力
+            // 登録完了メッセージ出力
             echo '登録が完了しました。';
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -70,7 +70,7 @@ if (!empty($_POST)) {
         <p>在庫数</p>
         <div class="mb-3">
             <select name="stock">
-                <option value="selected" selected>選択してください</option>
+                <option value="">選択してください</option>
                 <?php for ($i = 1; $i <= 100; $i++) : ?>
                     <option value="<?php echo $i; ?>">
                         <?php echo $i; ?>
