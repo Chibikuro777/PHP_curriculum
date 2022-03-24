@@ -18,8 +18,6 @@ if (isset($_POST['signUp'])) {
             $stmt = $pdo->prepare("INSERT INTO users(name, password) VALUES (?, ?)");
             // パスワードをハッシュ化
             $password_hash = password_hash($password, PASSWORD_DEFAULT);
-            // 値をセット　FILL_IN
-            $stmt->bindValue(':password', $password_hash);
             // 実行 FILL_IN
             $stmt->execute(array($name, $password_hash));
             //　登録完了メッセージ出力
